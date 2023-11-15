@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Author;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('produks', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Author::class);
-            $table->string('title');
-            $table->text('description');
-            $table->string('cover');
-            $table->boolean('is_published')->default(false);
+            $table->string('gambar');
+            $table->string('name');
+            $table->decimal('price');
+            $table->string('stok');
+            $table->string('category');
+            $table->dateTime('add_date');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('produks');
     }
 };
